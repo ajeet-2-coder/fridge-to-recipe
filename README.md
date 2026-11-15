@@ -1,122 +1,58 @@
-# 🍳 Fridge-to-Recipe AI
+# Fridge-to-Recipe AI
 
-A modern, structured web application built with **React**, **Vite**, and **LLM API integration** that helps home cooks transform available ingredients in their fridge into delicious, step-by-step recipes with scalable servings and smart ingredient swaps.
+A React app that turns ingredients you have on hand into a structured recipe. Add ingredients, choose dietary and meal preferences and a maximum cooking time, then generate a recipe with instructions, substitutions, and adjustable servings.
 
-> **Note:** This project is intentionally designed as an interactive, structured recipe generation tool—**not a conversational chatbot**.
+## Setup
 
----
+### Requirements
 
-## 🚀 Technology Stack
+- Node.js 18 or later and npm
+- A Gemini API key for live AI-generated recipes (optional; the app has a demo fallback)
 
-- **Frontend:** React 19 (Functional Components, Hooks), Vite 8
-- **Styling:** Modular CSS with custom food-tech design tokens (warm terracotta, sage, warm linen)
-- **Backend / API:** Node.js server route (`server/api/generateRecipe.js`)
-- **LLM Integration:** Structured JSON schema prompting via private server-side API key
-- **Version Control:** Git & GitHub
+### Install and run
 
----
-
-## 📁 Project Architecture & Folder Structure
-
-```text
-fridge_to_recipe/
-├── .env.example                # Environment variables template (API keys, ports)
-├── .gitignore                  # Git ignore rules (protects credentials and builds)
-├── index.html                  # HTML entry point with food-tech typography
-├── package.json                # Project dependencies and operational scripts
-├── vite.config.js              # Vite configuration
-├── README.md                   # Project documentation
-│
-├── server/                     # Backend API layer (keeps LLM credentials secure)
-│   └── api/
-│       └── generateRecipe.js   # Recipe generation endpoint controller
-│
-└── src/                        # Frontend application source
-    ├── assets/                 # Static media and brand assets
-    ├── components/             # Modular, single-responsibility UI components
-    │   ├── IngredientInput/    # Input field, tag management, quick-add chips
-    │   ├── RecipeView/         # Parent presentation view for generated recipe
-    │   ├── RecipeCard/         # Recipe metadata header (time, difficulty, cuisine)
-    │   ├── CheckableSteps/     # Interactive cooking step progression
-    │   ├── ScalableServings/   # Serving size adjustment stepper
-    │   ├── IngredientList/     # Dynamic ingredient list with scaled measurements
-    │   ├── IngredientSwap/     # Smart substitutions for missing ingredients
-    │   ├── LoadingState/       # Culinary-themed loading animation & tips
-    │   ├── ErrorState/         # Actionable error handling & retry interface
-    │   └── EmptyState/         # Welcoming empty state with sample ingredient baskets
-    │
-    ├── hooks/                  # Custom React hooks for business logic
-    │   └── useRecipe.js        # State machine managing recipe generation & scaling
-    │
-    ├── services/               # Client-side API abstraction layer
-    │   └── recipeService.js    # Client service communicating with backend
-    │
-    ├── utils/                  # Pure utility functions
-    │   ├── validateRecipe.js   # JSON schema validation for LLM responses
-    │   └── scaleIngredients.js # Proportional ingredient measurement scaling
-    │
-    ├── styles/                 # Global design system
-    │   └── global.css          # CSS variables, typography, reset & food-tech theme
-    │
-    ├── App.jsx                 # Top-level application shell
-    └── main.jsx                # React DOM root entry point
-```
-
----
-
-## 🧱 Architectural Breakdown
-
-| Folder / File | Responsibility |
-| :--- | :--- |
-| `src/components/` | Individual UI components. Each component is isolated in its own directory with an `index.js` re-export for clean modular imports. |
-| `src/hooks/` | Custom hooks (e.g. `useRecipe.js`) that encapsulate business logic, serving multipliers, step completion state, and API orchestration away from UI views. |
-| `src/services/` | Network layer handling requests to the backend server. Enforces separation of concerns so UI never interacts directly with low-level network calls. |
-| `src/utils/` | Deterministic pure helper functions for recipe data schema validation and dynamic serving scale mathematics. |
-| `src/styles/` | Global CSS custom properties declaring design tokens (colors, radii, shadows, typography) for a cohesive modern food-tech aesthetic. |
-| `server/` | Isolated Node.js backend layer guaranteeing that API keys are never exposed in client bundle code. |
-
----
-
-## 🛠️ How to Run Locally
-
-### Prerequisites
-- **Node.js** (v18.0.0 or higher recommended, tested on Node v24)
-- **npm** (v9 or higher)
-
-### 1. Clone & Install Dependencies
 ```bash
-git clone <repository-url>
-cd fridge_to_recipe
 npm install
-```
-
-### 2. Environment Configuration
-Copy the template environment file:
-```bash
-cp .env.example .env
-```
-*(On Windows PowerShell, use `Copy-Item .env.example .env`)*
-
-### 3. Start the Development Server
-```bash
 npm run dev
 ```
 
-Open your browser and navigate to:
-```text
-http://localhost:5173
+Open the local URL printed by Vite (normally `http://localhost:5173`). The Vite development server also handles the recipe API route, so a separate server process is not needed for local development.
+
+To use Gemini, create a `.env` file in the project root and set:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
-### 4. Build for Production
-To test production bundling and build integrity:
+Without a valid key, the app returns a simple demo recipe based on the submitted ingredients. Never commit your real `.env` file or expose the key in client-side code.
+
+Build the frontend with:
+
 ```bash
 npm run build
-npm run preview
 ```
 
----
+Other available scripts: `npm run lint` and `npm run preview` (to preview the built frontend).
 
-## 🔒 Security Principles
-- **No Client-Side Secrets:** Gemini / LLM API keys are never bundled into client JavaScript.
-- **Strict Response Validation:** All incoming LLM outputs are validated against a structured recipe schema in `validateRecipe.js` before being passed to UI components.
-- **Git Hygiene:** `.env` and sensitive local files are strictly excluded via `.gitignore`.
+## Usage
+
+1. Type one or more ingredients and press **Add** or Enter. Comma-separated entries and the quick-add ingredient buttons are supported.
+2. Optionally select a dietary style, meal type, and maximum cooking time.
+3. Choose **Generate Structured Recipe**.
+4. In the recipe view, adjust servings, check off cooking steps, mark ingredients, and apply suggested substitutions.
+
+## AI usage
+
+With `GEMINI_API_KEY` configured, the backend sends the ingredients and preferences to Google Gemini (`gemini-2.5-flash`) and requests a structured JSON recipe. The API key stays on the server. Without a key, a deterministic demo recipe is returned; it is not generated by an AI model. AI assistance was used to draft this README; the app’s AI recipe feature is the Gemini integration described above.
+
+## Limitations
+
+- AI-generated recipes, cooking times, nutrition estimates, and substitutions can be inaccurate. Check food safety, allergies, dietary requirements, and doneness independently.
+- The demo fallback is intentionally basic and does not truly tailor the recipe to dietary or time preferences.
+- Ingredient quantities are scaled proportionally, which may not work well for every recipe or seasoning.
+- Recipes and cooking progress are held in the current app session; there is no account or persistence layer.
+- Live generation requires internet access and a working Gemini API key; provider quotas and availability apply.
+
+## Time spent
+
+Not tracked for this project, so no reliable total is available.
