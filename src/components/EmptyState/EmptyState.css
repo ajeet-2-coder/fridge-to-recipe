@@ -1,0 +1,175 @@
+.empty-state-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-8);
+}
+
+.how-it-works-section {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.how-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-1);
+}
+
+.how-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto var(--space-6);
+}
+
+.steps-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  text-align: left;
+}
+
+.step-feature-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-badge-num {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-2);
+}
+
+.step-feature-title {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-1);
+}
+
+.step-feature-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Sample baskets */
+.sample-baskets-section {
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-6);
+}
+
+.baskets-header {
+  margin-bottom: var(--space-4);
+}
+
+.baskets-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  background-color: var(--color-secondary-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-1);
+}
+
+.baskets-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.baskets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.basket-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.basket-card:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.basket-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.basket-icon {
+  font-size: 1.5rem;
+}
+
+.basket-arrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.basket-card-title {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-1);
+}
+
+.basket-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+  line-height: 1.4;
+}
+
+.basket-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: auto;
+}
+
+.basket-pill {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}

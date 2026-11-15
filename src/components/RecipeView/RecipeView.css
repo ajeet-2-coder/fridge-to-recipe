@@ -1,0 +1,124 @@
+.recipe-view-container {
+  width: 100%;
+  animation: fadeIn 300ms ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recipe-view-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.btn-back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-back-nav:hover {
+  background-color: var(--color-primary-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.recipe-action-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.btn-action {
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.btn-action:hover {
+  border-color: var(--color-text-main);
+  color: var(--color-text-main);
+}
+
+.recipe-content-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .recipe-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.toast-notification {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  background-color: var(--color-text-main);
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  animation: slideUp 200ms ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media print {
+  .recipe-view-nav,
+  .toast-notification,
+  .scalable-servings-card .servings-controls,
+  .quick-servings-presets,
+  .btn-apply-swap {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .recipe-hero-card,
+  .ingredient-list-card,
+  .checkable-steps-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}

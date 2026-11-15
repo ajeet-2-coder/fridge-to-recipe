@@ -9,6 +9,7 @@ dist-ssr/
 build/
 
 # Environment variables (NEVER commit actual API keys or secrets)
+.env.example
 .env
 .env.local
 .env.development.local

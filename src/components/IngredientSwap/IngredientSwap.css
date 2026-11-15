@@ -1,0 +1,111 @@
+.ingredient-swap-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.swap-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.swap-badge-icon {
+  font-size: 1.5rem;
+}
+
+.swap-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.swap-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.swap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.swap-item {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  transition: all var(--transition-fast);
+}
+
+.swap-item:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.swap-pair {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.swap-original {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.swap-arrow {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+}
+
+.swap-substitute {
+  color: var(--color-secondary);
+}
+
+.swap-note {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.btn-apply-swap {
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.btn-apply-swap:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-swap-active {
+  background-color: var(--color-secondary-subtle);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.swap-applied {
+  border-color: var(--color-secondary);
+  background-color: #f7fdf9;
+}

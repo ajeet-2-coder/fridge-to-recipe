@@ -1,0 +1,116 @@
+.scalable-servings-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.servings-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.servings-icon {
+  font-size: 1.5rem;
+}
+
+.servings-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.servings-subtitle {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.servings-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1);
+}
+
+.servings-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.servings-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.servings-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.servings-count-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-3);
+  min-width: 60px;
+}
+
+.servings-count-display strong {
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  line-height: 1;
+}
+
+.servings-unit {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: lowercase;
+}
+
+.quick-servings-presets {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.preset-btn {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.preset-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.preset-btn.active {
+  background-color: var(--color-primary-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

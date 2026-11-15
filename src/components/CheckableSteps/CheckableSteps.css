@@ -1,0 +1,169 @@
+.checkable-steps-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.steps-header {
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-4);
+}
+
+.steps-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-1);
+}
+
+.steps-subheading {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.progress-container {
+  background-color: var(--color-bg);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-full);
+  transition: width 300ms ease-out;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.step-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+}
+
+.step-checkbox-wrapper {
+  padding-top: var(--space-1);
+}
+
+.step-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.step-body {
+  flex: 1;
+}
+
+.step-header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.step-number-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-bg);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+}
+
+.step-done-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.step-text {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+.step-completed {
+  background-color: var(--color-bg);
+  opacity: 0.75;
+  border-color: transparent;
+}
+
+.step-completed .step-text {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.all-steps-complete-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background-color: var(--color-success-bg);
+  border: 1.5px solid var(--color-success);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-6);
+  color: var(--color-success);
+  animation: celebratePop 250ms ease-out;
+}
+
+@keyframes celebratePop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.congrats-icon {
+  font-size: 2rem;
+}

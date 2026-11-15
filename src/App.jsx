@@ -1,11 +1,42 @@
-/**
- * App Component
- * Root component of the Fridge-to-Recipe AI application.
- * Initialized with foundational layout, food-tech theme tokens, and structured module slots.
- */
+import { useRecipe } from './hooks/useRecipe'
+import IngredientInput from './components/IngredientInput'
+import RecipeView from './components/RecipeView'
+import LoadingState from './components/LoadingState'
+import ErrorState from './components/ErrorState'
+import EmptyState from './components/EmptyState'
+
 function App() {
+  const {
+    ingredients,
+    dietaryPreference,
+    setDietaryPreference,
+    mealType,
+    setMealType,
+    maxTime,
+    setMaxTime,
+    recipe,
+    servings,
+    setServings,
+    completedSteps,
+    checkedIngredients,
+    appliedSwaps,
+    isLoading,
+    loadingStage,
+    error,
+    addIngredient,
+    removeIngredient,
+    clearIngredients,
+    toggleStep,
+    toggleIngredient,
+    applySwap,
+    generateRecipe,
+    resetRecipe,
+    loadSampleBasket
+  } = useRecipe()
+
   return (
     <div className="app-container">
+      {/* App Top Brand Header */}
       <header style={{
         textAlign: 'center',
         padding: 'var(--space-8) 0 var(--space-6)',
@@ -20,7 +51,7 @@ function App() {
           color: 'var(--color-primary)',
           borderRadius: 'var(--radius-full)',
           fontSize: '0.875rem',
-          fontWeight: 600,
+          fontWeight: 700,
           marginBottom: 'var(--space-3)'
         }}>
           <span>🍳</span> Fridge-to-Recipe AI
@@ -32,107 +63,95 @@ function App() {
           letterSpacing: '-0.025em',
           marginBottom: 'var(--space-2)'
         }}>
-          Turn Available Ingredients Into Delicious Recipes
+          Cook Delicious Meals With What You Have
         </h1>
         <p style={{
           color: 'var(--color-text-secondary)',
-          fontSize: '1.125rem',
-          maxWidth: '620px',
+          fontSize: '1.1rem',
+          maxWidth: '640px',
           margin: '0 auto'
         }}>
-          A structured culinary generation engine powered by LLMs. Minimize food waste, explore customized meal ideas, and scale recipes seamlessly.
+          Enter the fresh ingredients sitting in your fridge. Our culinary AI generates structured, scalable recipes with step-by-step guidance.
         </p>
       </header>
 
+      {/* Main Content Area */}
       <main style={{ padding: 'var(--space-8) 0' }}>
-        <div style={{
-          backgroundColor: 'var(--color-surface)',
-          borderRadius: 'var(--radius-xl)',
-          padding: 'var(--space-8)',
-          boxShadow: 'var(--shadow-md)',
-          border: '1px solid var(--color-border)',
-          textAlign: 'center'
-        }}>
-          <div style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '50%',
-            backgroundColor: 'var(--color-secondary-subtle)',
-            color: 'var(--color-secondary)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.75rem',
-            margin: '0 auto var(--space-4)'
-          }}>
-            ✓
-          </div>
-          <h2 style={{
-            fontSize: '1.5rem',
-            fontWeight: 700,
-            marginBottom: 'var(--space-2)',
-            color: 'var(--color-text-main)'
-          }}>
-            Phase 1: Project Initialization Complete
-          </h2>
-          <p style={{
-            color: 'var(--color-text-secondary)',
-            maxWidth: '520px',
-            margin: '0 auto var(--space-6)',
-            lineHeight: 1.6
-          }}>
-            Vite + React environment configured, dependencies verified, and modular folder architecture successfully scaffolded. Standing by for Phase 2: Frontend UI Implementation.
-          </p>
+        {/* Error notification banner if any */}
+        {error && (
+          <ErrorState
+            title={error.title}
+            message={error.message}
+            onRetry={generateRecipe}
+            onDismiss={() => {}}
+          />
+        )}
 
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 'var(--space-3)',
-            flexWrap: 'wrap'
-          }}>
-            <span style={{
-              padding: 'var(--space-2) var(--space-4)',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
-              fontSize: '0.875rem',
-              color: 'var(--color-text-secondary)'
-            }}>
-              ⚛️ React 19 + Vite
-            </span>
-            <span style={{
-              padding: 'var(--space-2) var(--space-4)',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
-              fontSize: '0.875rem',
-              color: 'var(--color-text-secondary)'
-            }}>
-              🎨 Modern Food-Tech CSS Tokens
-            </span>
-            <span style={{
-              padding: 'var(--space-2) var(--space-4)',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
-              fontSize: '0.875rem',
-              color: 'var(--color-text-secondary)'
-            }}>
-              🛡️ Secure Server Architecture
-            </span>
-          </div>
-        </div>
+        {/* Loading state indicator */}
+        {isLoading && (
+          <LoadingState
+            message="Crafting Your Structured Recipe..."
+            loadingStage={loadingStage}
+          />
+        )}
+
+        {/* Generated Recipe Presentation View */}
+        {!isLoading && recipe && (
+          <RecipeView
+            recipe={recipe}
+            servings={servings}
+            onServingsChange={setServings}
+            completedSteps={completedSteps}
+            onToggleStep={toggleStep}
+            checkedIngredients={checkedIngredients}
+            onToggleIngredient={toggleIngredient}
+            appliedSwaps={appliedSwaps}
+            onApplySwap={applySwap}
+            onReset={resetRecipe}
+          />
+        )}
+
+        {/* Input & Onboarding View (when no recipe active) */}
+        {!isLoading && !recipe && (
+          <>
+            <IngredientInput
+              ingredients={ingredients}
+              onAddIngredient={addIngredient}
+              onRemoveIngredient={removeIngredient}
+              onClearIngredients={clearIngredients}
+              onGenerate={generateRecipe}
+              isLoading={isLoading}
+              dietaryPreference={dietaryPreference}
+              onDietaryChange={setDietaryPreference}
+              mealType={mealType}
+              onMealTypeChange={setMealType}
+              maxTime={maxTime}
+              onMaxTimeChange={setMaxTime}
+            />
+
+            <EmptyState onSelectSampleBasket={loadSampleBasket} />
+          </>
+        )}
       </main>
 
+      {/* Footer */}
       <footer style={{
         marginTop: 'auto',
         textAlign: 'center',
-        padding: 'var(--space-6) 0',
+        padding: 'var(--space-8) 0 var(--space-6)',
         color: 'var(--color-text-muted)',
         fontSize: '0.875rem',
-        borderTop: '1px solid var(--color-border-subtle)'
+        borderTop: '1px solid var(--color-border-subtle)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--space-2)'
       }}>
-        Fridge-to-Recipe AI • Frontend Engineering Internship Project
+        <div>
+          Fridge-to-Recipe AI • Frontend Engineering Internship Project
+        </div>
+        <div style={{ fontSize: '0.8rem' }}>
+          Built with React 19, Vite & Gemini Structured Output
+        </div>
       </footer>
     </div>
   )
