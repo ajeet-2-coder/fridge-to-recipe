@@ -139,3 +139,20 @@ The recipe feature sends the submitted ingredients and preferences to Google Gem
 | **Total** | **5 hours 15 minutes** |
 
 These are approximate development estimates rather than measured execution times.
+
+## Future Improvements
+
+- Save favorite recipes and keep a searchable history of generated recipes.
+- Add user accounts and cloud sync for pantry ingredients, preferences, and cooking progress.
+- Track pantry quantities and expiration dates, with reminders to use ingredients before they spoil.
+- Create shopping lists for missing ingredients and let users export or share them.
+- Improve recipe evaluation so generated instructions, substitutions, and nutrition details are more reliable.
+- Add ingredient entry from a photo or barcode scan.
+
+## License
+
+No license has been specified for this repository. Reuse and redistribution are not granted by an explicit open-source license.
+
+---
+
+**Built to make cooking with what you have simpler, more flexible, and more enjoyable.**
