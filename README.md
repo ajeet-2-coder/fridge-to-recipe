@@ -125,6 +125,17 @@ The recipe feature sends the submitted ingredients and preferences to Google Gem
 - Live generation needs internet access, a valid Gemini API key, and available provider quota.
 - The standalone Express server and Vite development middleware are separate ways to serve the API; production hosting needs to provide both the built frontend and an API server.
 
-## Time spent
+## Development Time
 
-Not tracked for this project, so a reliable total is unavailable.
+**Approximate Total Development Time: 5 Hours 15 Minutes**
+
+| Development Phase | Estimated Time |
+| --- | ---: |
+| Architecture and Project Setup | 45 minutes |
+| UI Design and Interactive Components | 1 hour 30 minutes |
+| AI Integration, Backend, and Validation | 1 hour 15 minutes |
+| Local Storage, Mistake Review, and Analytics | 1 hour |
+| Testing and Documentation | 45 minutes |
+| **Total** | **5 hours 15 minutes** |
+
+These are approximate development estimates rather than measured execution times.
